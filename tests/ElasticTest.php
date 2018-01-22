@@ -9,6 +9,7 @@
 *  @author bjomal
 */
 class ElasticTest extends PHPUnit_Framework_TestCase{
+  public const DEFAULT_ELASTIC_URL = 'localhost:99';
 	
   /**
   * Just check if the Elastic has no syntax error 
@@ -18,7 +19,7 @@ class ElasticTest extends PHPUnit_Framework_TestCase{
   *
   */
   public function testIsThereAnySyntaxError(){
-	$var = new Vegvesen\MimeElastic\Elastic;
+	$var = new Vegvesen\MimeElastic\Elastic(self::DEFAULT_ELASTIC_URL);
 	$this->assertTrue(is_object($var));
 	unset($var);
   }
@@ -31,7 +32,7 @@ class ElasticTest extends PHPUnit_Framework_TestCase{
   *
   */
   public function testMethod1(){
-	$var = new Vegvesen\MimeElastic\Elastic;
+	$var = new Vegvesen\MimeElastic\Elastic(self::DEFAULT_ELASTIC_URL);
 	$this->assertTrue($var->method1("hey") == 'Hello World');
 	unset($var);
   }
