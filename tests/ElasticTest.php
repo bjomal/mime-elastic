@@ -9,7 +9,7 @@
 *  @author bjomal
 */
 class ElasticTest extends PHPUnit_Framework_TestCase{
-  public const DEFAULT_ELASTIC_URL = 'localhost:99';
+  public const DEFAULT_ELASTIC_URL = 'http://localhost:9200';
 	
   /**
   * Just check if the Elastic has no syntax error 
@@ -25,6 +25,19 @@ class ElasticTest extends PHPUnit_Framework_TestCase{
   }
   
   /**
+  * Test if connect is OK 
+  *
+  * This is just a simple check to make sure your library has no syntax error. This helps you troubleshoot
+  * any typo before you even use this library in a real project.
+  *
+  */
+  public function testConnect(){
+  $var = new Vegvesen\MimeElastic\Elastic(self::DEFAULT_ELASTIC_URL);
+  $this->assertTrue($var->connect() == false);
+  unset($var);
+  }
+
+  /**
   * Just check if the Elastic has no syntax error 
   *
   * This is just a simple check to make sure your library has no syntax error. This helps you troubleshoot
@@ -33,7 +46,7 @@ class ElasticTest extends PHPUnit_Framework_TestCase{
   */
   public function testMethod1(){
 	$var = new Vegvesen\MimeElastic\Elastic(self::DEFAULT_ELASTIC_URL);
-	$this->assertTrue($var->method1("hey") == 'Hello World');
+	$this->assertTrue($var->method1("hey") == 'Hello Worldx');
 	unset($var);
   }
   
